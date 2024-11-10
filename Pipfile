@@ -10,7 +10,7 @@ matplotlib = "*"
 multiprocess = "*"
 scipy = "*"
 flask-cors = "*"
-torch = "*"
+torch = "==2.1.0"
 gunicorn = "*"
 
 [dev-packages]
