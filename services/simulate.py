@@ -22,7 +22,9 @@ def deal_opponents(n: int, deck: Deck) -> List[Hand]:
     return [Hand(deck.draw(2)) for _ in range(n)]
 
 def fill_board(deck: Deck, board: List[int], stage: int):
-    return board + deck.draw(stage - len(board))
+    stage = 5
+    output = board + deck.draw(stage - len(board))
+    return output
 
 def single_trial(player_hand: Hand, num_opponents: int, stage: int, board: List[int], trials: int):
     evaluator = Evaluator()
