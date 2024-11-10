@@ -11,6 +11,8 @@ import os
 current_directory = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(current_directory, "pokertorch.pt")
 pokertorch = torch.jit.load(model_path)
+device = torch.device("cpu")  # Set device to CPU explicitly
+pokertorch = pokertorch.to(device)
 
 class Hand:
     def __init__(self, cards):
