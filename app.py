@@ -9,6 +9,13 @@ CORS(
     resources={r"/api/*": {"origins": "http://localhost:5173"}},
     supports_credentials=True,
 )
+@app.route("/")
+def home():
+    return jsonify({"message": "Hello"})
+
+@app.route('/favicon.ico')
+def favicon():
+    return '', 204
 
 @app.route("/api/simulate", methods=["POST", "GET"])
 def api_simulate():

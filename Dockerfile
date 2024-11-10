@@ -6,7 +6,7 @@ WORKDIR /backend
 
 COPY Pipfile* /backend/
 
-RUN pipenv install --deploy --ignore-pipfile
+RUN pipenv install --deploy --ignore-pipfile && pipenv install gunicorn
 
 COPY . /backend
 
