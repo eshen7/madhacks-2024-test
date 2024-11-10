@@ -1,16 +1,18 @@
 FROM python:3.10-slim
 
+ENV PIPENV_VENV_IN_PROJECT=1
+
 RUN pip install --upgrade pip && pip install pipenv
 
-WORKDIR /backend
+WORKDIR /app
 
-COPY Pipfile* /backend/
+COPY Pipfile* /app/
 
-RUN pipenv install --deploy --ignore-pipfile && pipenv install gunicorn
+RUN pipenv install --deploy --ignore-pipfile
 
-COPY . /backend
+COPY . /app
 
-RUN useradd -m myuser && chown -R myuser /backend/
+RUN useradd -m myuser && chown -R myuser /app/
 USER myuser
 
 CMD ["pipenv", "run", "gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
