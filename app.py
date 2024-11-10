@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from treys import Card
+import os
 from services.simulate import Hand, sim_stats, get_initial_guess
 
 app = Flask(__name__)
@@ -31,4 +32,5 @@ def api_simulate():
     return jsonify({"win_pct": mean, "sd": sd, "breakeven_pct": breakeven, "optimal_raise": optimal_raise})
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    port = int(os.environ.get("PORT", 5000))  # Use the port provided by Heroku
+    app.run(host="0.0.0.0", port=port)
