@@ -13,4 +13,4 @@ COPY . /backend
 RUN useradd -m myuser && chown -R myuser /backend/
 USER myuser
 
-CMD ["pipenv", "run", "python", "app.py"]
+CMD ["pipenv", "run", "gunicorn", "app:app"]
