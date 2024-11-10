@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from treys import Card
 import os
 from services.simulate import Hand, sim_stats, get_initial_guess
