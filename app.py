@@ -7,7 +7,7 @@ from services.simulate import Hand, sim_stats, get_initial_guess
 app = Flask(__name__)
 CORS(
     app,
-    resources={r"/api/*": {"origins": "http://localhost:5173"}},
+    resources={r"/api/*": {"origins": ["http://localhost:5173", "https://madhacks-2024.vercel.app"]}},
     supports_credentials=True,
 )
 @app.route("/")
