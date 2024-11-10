@@ -49,7 +49,7 @@ def single_trial(player_hand: Hand, num_opponents: int, stage: int, board: List[
             wins += 1  # Win Condition
     return wins
 
-def simulate(player_hand: Hand, num_opponents: int, stage: int, board: List[int], trials=100, n=2500):
+def simulate(player_hand: Hand, num_opponents: int, stage: int, board: List[int], trials=100, n=1000):
     num_processes = min(cpu_count(), n)
     chunk_size = n // num_processes
     
@@ -60,7 +60,7 @@ def simulate(player_hand: Hand, num_opponents: int, stage: int, board: List[int]
     
     return results
 
-def sim_stats(player_hand: Hand, num_opponents: int, stage: int, board: List[int], risk: float, trials=100, n=2500):
+def sim_stats(player_hand: Hand, num_opponents: int, stage: int, board: List[int], risk: float, trials=100, n=1000):
     results = simulate(player_hand, num_opponents, stage, board, trials, n)
     data = np.array(results) / trials
     mean = np.mean(data)

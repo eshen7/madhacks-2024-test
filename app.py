@@ -43,7 +43,7 @@ def api_simulate():
             board=board,
             risk=risk,
             trials=100,
-            n=2500,
+            n=1000,
         )
 
         return jsonify(
