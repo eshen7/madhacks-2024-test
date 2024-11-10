@@ -15,4 +15,4 @@ COPY . /app
 RUN useradd -m myuser && chown -R myuser /app/
 USER myuser
 
-CMD ["pipenv", "run", "gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
+CMD ["pipenv", "run", "gunicorn", "-w", "4", "-b", "0.0.0.0:$PORT", "app:app"]
